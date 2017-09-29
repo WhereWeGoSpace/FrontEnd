@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
+
+  <title>Where are you going?</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      Start site: <span id="startSite"></span> End site: ooo
+    </div>
+    <div class="row">
+      Date: 2017/09/29
+    </div>
+    <div class="row">
+      Price: $300
+    </div>
+    <div class="row">
+      <input type="button" value="checkout" />
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+  <script>
+    // page load
+    $(function () {
+      $.get("http://localhost:3000/posts", function (data) {
+                            $("#startSite").text(data[0].title);
+      });
+      /*
+      var jqxhr = $.ajax( "http://localhost:3000/posts/1" )
+.done(function() {
+  alert( "success" );
+})
+.fail(function() {
+  alert( "error" );
+})
+.always(function() {
+  alert( "complete" );
+});
+*/
+      //$("#startSite").text('中文');
+      //alert('test');
+    });
+  </script>
+</body>
+
+</html>

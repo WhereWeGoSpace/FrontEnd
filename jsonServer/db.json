@@ -3,12 +3,13 @@
       { 
         "startSite": "start", 
         "endSite": "end", 
-        "date": "12/15" , 
+        "timestamp": 1506708367000 , 
         "price": "123" 
       }
     ],
 
     "ticketDownloadLink": {
+      "success": true,
       "url": "https://notepad-plus-plus.org/repository/7.x/7.5.1/npp.7.5.1.bin.x64.zip"
     }
 }

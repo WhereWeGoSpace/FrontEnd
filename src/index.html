@@ -50,20 +50,31 @@
       </div>
     </div>
 
-    <div id="checkout" class="text-vertical-center" style="display: none">
+    <div id="creditCardVerifyInfo" class="text-vertical-center" style="display: none">
       <div style="margin-bottom: 20px; font-size: 50px">
         <div>
-          信用卡卡號:
+          信用卡卡號:<br><input type="text" name="cardNumber"><br>
         </div>
         <div>
-          到期日:
+          到期日:<br><input type="text" name="expirationDate"><br>
         </div>
         <div>
-          驗證碼:
+          驗證碼:<br><input type="text" name="verifyNumber"><br>
         </div>
       </div>
       <div>
         <a id="pay" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Pay</a>
+      </div>
+    </div>
+
+    <div id="creditCardVerifyError" class="text-vertical-center" style="display: none">
+      <div style="margin-bottom: 20px; font-size: 50px">
+        <div>
+          信用卡資訊錯誤，請重新輸入。
+        </div>
+      </div>
+      <div>
+        <a id="backToCreditCardInfoInput" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Back</a>
       </div>
     </div>
 
@@ -82,7 +93,7 @@
 
   <!-- Program Logic -->
   <script src="js/logic.js"></script>
-  
+
 </body>
 
 </html>

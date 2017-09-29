@@ -14,5 +14,6 @@ cmd /c .\node_modules\.bin\cucumber.js.cmd
 echo %errorlevel%
 if errorlevel 1 (
   echo 'build failed.'
+  cd ..
   GOTO:EOF
 )

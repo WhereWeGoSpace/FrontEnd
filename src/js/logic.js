@@ -1,8 +1,9 @@
+var REMOTE_SERVER = "http://localhost:3000"
 
 $(function () {
     $("#click").click(function () {
         $.ajax({
-            url: 'http://localhost:3000/travelInfo',
+            url: REMOTE_SERVER + '/travelInfo',
             type: 'GET',
             data: {
             },
@@ -32,7 +33,7 @@ $(function () {
 
     $("#pay").click(function () {
         $.ajax({
-            url: 'http://localhost:3000/ticketDownloadLink',
+            url: REMOTE_SERVER + '/ticketDownloadLink',
             type: 'GET',
             data: {
                 cardNumber: $("#cardNumber").val(),

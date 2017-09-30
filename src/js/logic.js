@@ -1,4 +1,5 @@
 var site_code = {"from":"", "to":""};
+var order_info = {"orderNumber":""};
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -38,63 +39,72 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
     });
 }
 
-function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, salutation, firstName, surname, email, streetNumber, townCity, country, postcode, birthDay, passcode, phone) {
+function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, firstName, surname, email, birthDay, passcode) {
     var paymentInfo = {
-        cardNumber: cardNumber,
-        expirationYear: expirationYear,
-        expirationMonth: expirationMonth,
-        cvv: cvv,
-        salutation: salutation,
-        firstName: firstName,
-        surname: surname,
-        email: email,
-        streetNumber: streetNumber,
-        townCity: townCity,
-        country: country,
-        postcode: postcode,
-        birthDay: birthDay,
-        passcode: passcode,
-        phone: phone
+        "From_Code": site_code.from,
+        "To_Code": site_code.to,
+        "Contactor": {
+            "name": firstName + surname,
+            "email": email,
+            "phone": "",
+            "address": "",
+            "postcode": ""
+        },
+        "Passengers": [
+            {
+            "last_name": surname,
+            "first_name": firstName,
+            "birthdate": birthDay,
+            "passport": passcode,
+            "email": email,
+            "phone": "",
+            "gender": ""
+            }
+        ]
     }
     return paymentInfo;
 }
 
-function paymentInfoHandler() {
+function confirm() {
+    
+}
+
+function payment() {
+
+}
+
+function booking() {
     $.ajax({
         url: REMOTE_SERVER + '/ticketDownloadLink',
-        type: 'GET',
-        data: generatePaymentInfo($("#cardNumber").val(),
+        type: 'POST',
+        data: generatePaymentInfo($("#cardNo").val(),
             $("#expirationYear").val(),
             $("#expirationMonth").val(),
             $("#cvv").val(),
-            $("#salutation").val(),
             $("#firstName").val(),
             $("#surname").val(),
             $("#email").val(),
-            $("#streetNumber").val(),
-            $("#townCity").val(),
-            $("#country").val(),
-            $("#postcode").val(),
             $("#birthDay").val(),
-            $("#passcode").val(),
-            $("#phone").val()),
+            $("#passcode").val())
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
-            if (!data.success) {
-                $("#creditCardVerifyInfo").slideUp("slow", function () {
-                    $("#creditCardVerifyError").fadeIn();
-                });
-            }
-            else {
-                for (let i in data.url) {
-                    window.open(data.url[i], "_blank");
-                }
-            }
+            order_info.orderNumber = data.id;
         },
         dataType: "json"
     });
+}
+
+if (!data.success) {
+    $("#creditCardVerifyInfo").slideUp("slow", function () {
+        $("#creditCardVerifyError").fadeIn();
+    });
+}
+else {
+    for (let i in data.url) {
+        window.open(data.url[i], "_blank");
+    }
 }
 
 function registerHandler() {
@@ -114,7 +124,7 @@ function registerHandler() {
         });
     });
 
-    $("#pay").click(paymentInfoHandler);
+    $("#pay").click(booking);
 
     $("#backToCreditCardInfoInput").click(function () {
         $("#creditCardVerifyError").slideUp("slow", function () {

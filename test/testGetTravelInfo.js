@@ -6,7 +6,7 @@ if (typeof QUnit == 'undefined') // if your tests also run in the browser...
 if (typeof module !== 'undefined' && module.exports) {
 	moment = require('moment-timezone')
 	var logic = require('../src/js/logic.js')
-	processTravelInfo = logic.processTravelInfo;	
+	processTravelInfo = logic.processTravelInfo;
 }
 
 QUnit.test("test_travel_info", function (assert) {
@@ -20,6 +20,7 @@ QUnit.test("test_travel_info", function (assert) {
 	var price = new MockHTMLElement();
 	var bar = new MockHTMLElement();
 	var site_code = [];
+	
 	startSite.text = function (data) { this.text = data };
 	endSite.text = function (data) { this.text = data };
 	date.text = function (data) { this.text = data };
@@ -30,12 +31,10 @@ QUnit.test("test_travel_info", function (assert) {
 
 	assert.ok(startSite.text == "Taipei", "Passed!");
 	assert.ok(endSite.text == "Taoyuan", "Passed!");
-	console.log(date.text);
-	
 	assert.ok(date.text == "October 4th 2017, 1:27:39 pm", "Passed!");
-	assert.ok(price.text == "10", "Passed!");	
+	assert.ok(price.text == "10", "Passed!");
 	assert.ok(site_code.from == "SIFJD38", "Passed!");
 	assert.ok(site_code.to == "JIFU234", "Passed!");
 	assert.ok(bar.slideUpIsCalled == true, "Passed!");
-	
+
 });

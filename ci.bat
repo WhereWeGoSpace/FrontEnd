@@ -15,7 +15,7 @@ start /B cmd /k http-server -p 8080
 
 rem execute unit testing
 cd ../test
-call qunit-cli testGeneratePaymentInfo.js
+call qunit-cli testGenerateInfo.js
 echo "tttt"
 call qunit-cli testGetTravelInfo.js
 cd ..

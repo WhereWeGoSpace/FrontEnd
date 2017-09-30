@@ -11,8 +11,6 @@ if (typeof module !== 'undefined' && module.exports) {
 QUnit.test("test_credit_card_payment_info", function (assert) {
     var paymentInfo = generatePaymentInfo("1", "2", "3", "4", "5", {"from": "qwe", "to": "rit"});
 
-    console.log(paymentInfo)
-
     assert.ok("qwe" == paymentInfo.From_Code, "Passed!");
     assert.ok("rit" == paymentInfo.To_Code, "Passed!");
     assert.ok("12" == paymentInfo.Contactor.name, "Passed!");

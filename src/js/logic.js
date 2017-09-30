@@ -1,16 +1,14 @@
+var site_code = {"from":"", "to":""};
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         processTravelInfo: processTravelInfo,
         generatePaymentInfo: generatePaymentInfo,
-        from_code: from_code,
-        to_code: to_code
     };
 }
 
 var REMOTE_SERVER = "http://ec2-13-115-146-214.ap-northeast-1.compute.amazonaws.com"
 
-var from_code = ""
-var to_code = ""
 
 function clickHandler() {
     $.ajax({
@@ -21,19 +19,19 @@ function clickHandler() {
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
-        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar")) },
+        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar")), site_code},
         dataType: "json"
     });
 }
 
-function processTravelInfo(data, startSite, endSite, date, price, bar) {
+function processTravelInfo(data, startSite, endSite, date, price, bar, site_code) {
     startSite.text(data.From);
     endSite.text(data.To);
     date.text(moment(data.Date).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm:ss a'));
     price.text(data.Price);
 
-    from_code = data.From_Code;
-    to_code = data.To_Code;
+    site_code.from = data.From_Code;
+    site_code.to = data.To_Code;
 
     bar.slideUp("slow", function () {
         $("#result").fadeIn();
@@ -98,6 +96,7 @@ function paymentInfoHandler() {
         dataType: "json"
     });
 }
+
 function registerHandler() {
     $("#click").click(clickHandler);
 

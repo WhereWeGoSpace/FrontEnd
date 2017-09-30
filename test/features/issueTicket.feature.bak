@@ -5,5 +5,4 @@ Feature: Issue Ticket
 
   Scenario: Issue Ticket
     Given I am on the credit card information page and fill all information
-    When I click on "Pay"
-    Then I should see "Download my ticket"
+    When I click Pay button

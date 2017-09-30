@@ -32,7 +32,7 @@ QUnit.test("test_travel_info", function (assert) {
 	assert.ok(endSite.text == "Taoyuan", "Passed!");
 	console.log(date.text);
 	
-	//assert.ok(date.text == "October 4th 2017, 12:27:39 am", "Passed!");
+	assert.ok(date.text == "October 4th 2017, 1:27:39 pm", "Passed!");
 	assert.ok(price.text == "10", "Passed!");	
 	assert.ok(site_code.from == "SIFJD38", "Passed!");
 	assert.ok(site_code.to == "JIFU234", "Passed!");

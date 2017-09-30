@@ -1,32 +1,39 @@
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         processTravelInfo: processTravelInfo,
-        generatePaymentInfo: generatePaymentInfo
+        generatePaymentInfo: generatePaymentInfo,
+        from_code: from_code,
+        to_code: to_code
     };
 }
 
-var REMOTE_SERVER = "http://localhost:3000"
+var REMOTE_SERVER = "http://ec2-13-115-146-214.ap-northeast-1.compute.amazonaws.com"
+
+var from_code = ""
+var to_code = ""
 
 function clickHandler() {
     $.ajax({
-        url: REMOTE_SERVER + '/travelInfo',
+        url: REMOTE_SERVER + '/API/Ticket/LoadingJourneys',
         type: 'GET',
         data: {
         },
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
-        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar")) }
+        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar")) },
+        dataType: "json"
     });
 }
 
 function processTravelInfo(data, startSite, endSite, date, price, bar) {
-    let startDate = new Date(data[0].timestamp);
+    startSite.text(data.From);
+    endSite.text(data.To);
+    date.text(moment(data.Date).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm:ss a'));
+    price.text(data.Price);
 
-    startSite.text(data[0].startSite);
-    endSite.text(data[0].endSite);
-    date.text(startDate.toLocaleDateString("en-US"));
-    price.text(data[0].price);
+    from_code = data.From_Code;
+    to_code = data.To_Code;
 
     bar.slideUp("slow", function () {
         $("#result").fadeIn();
@@ -87,7 +94,8 @@ function paymentInfoHandler() {
                     window.open(data.url[i], "_blank");
                 }
             }
-        }
+        },
+        dataType: "json"
     });
 }
 function registerHandler() {

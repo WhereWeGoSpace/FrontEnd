@@ -101,6 +101,8 @@ function paymentInfoHandler() {
 function registerHandler() {
     $("#click").click(clickHandler);
 
+    $("#retry").click(clickHandler);
+    
     $("#checkout").click(function () {
         $("#result").slideUp("slow", function () {
             $("#contactInfo").fadeIn();

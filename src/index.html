@@ -19,6 +19,27 @@
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <style>
+    .loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -138,6 +159,7 @@
             <div class="form-group row">
               <div class="offset-sm-2 col-sm-10">
                 <a id="pay" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 20px; background-color: #0275d8; color: #ffffff; width: 120px">Confirm</a>
+                <div id="loader" class="loader" style="display:none"></div>
               </div>
             </div>
           </form>

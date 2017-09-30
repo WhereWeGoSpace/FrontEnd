@@ -113,7 +113,11 @@ function registerHandler() {
         });
     });
 
-    $("#pay").click(booking);
+    $("#pay").click(function() {
+        $(this).hide();
+        $("#loader").show();
+        booking();
+    });
 
     $("#backToCreditCardInfoInput").click(function () {
         $("#creditCardVerifyError").slideUp("slow", function () {

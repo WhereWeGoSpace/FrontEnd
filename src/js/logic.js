@@ -19,7 +19,7 @@ function clickHandler() {
         data: {
         },
         error: function (xhr) {
-            alert('Ajax request 發生錯誤');
+            clickHandler();
         },
         success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar"), site_code)},
         dataType: "json"
@@ -89,7 +89,10 @@ function downloadTicket() {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
-            
+            for (var i in data)
+            {
+                window.open(data[i], "_blank");
+            }
         },
         dataType: "json"
     });

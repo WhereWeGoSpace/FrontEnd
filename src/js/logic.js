@@ -1,3 +1,10 @@
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        processTravelInfo: processTravelInfo,
+        generatePaymentInfo: generatePaymentInfo
+    };
+}
+
 var REMOTE_SERVER = "http://localhost:3000"
 
 function clickHandler() {
@@ -32,10 +39,10 @@ function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, s
         expirationYear: expirationYear,
         expirationMonth: expirationMonth,
         cvv: cvv,
-        salutation:salutation,
+        salutation: salutation,
         firstName: firstName,
         surname: surname,
-        email:email,
+        email: email,
         streetNumber: streetNumber,
         townCity: townCity,
         country: country,

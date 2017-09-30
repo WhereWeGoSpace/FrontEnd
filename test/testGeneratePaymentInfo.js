@@ -1,3 +1,13 @@
+if (typeof QUnit == 'undefined') // if your tests also run in the browser...
+{
+	QUnit = require('qunit-cli');
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+	var logic = require('../src/js/logic.js')
+	generatePaymentInfo = logic.generatePaymentInfo;	
+}
+
 QUnit.test("test_credit_card_payment_info", function (assert) {
     var paymentInfo = generatePaymentInfo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
 

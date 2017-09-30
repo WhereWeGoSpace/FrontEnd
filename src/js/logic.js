@@ -30,7 +30,7 @@ function processTravelInfo(data, startSite, endSite, date, price, bar) {
     startSite.text(data.From);
     endSite.text(data.To);
     date.text(moment(data.Date).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm:ss a'));
-    price.text(data.Price);
+    price.text(data.Price / 100);
 
     from_code = data.From_Code;
     to_code = data.To_Code;

@@ -26,6 +26,63 @@ function processTravelInfo(data, startSite, endSite, date, price, bar) {
     });
 }
 
+function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, salutation, firstName, surname, email, streetNumber, townCity, country, postcode, birthDay, passcode, phone) {
+    var paymentInfo = {
+        cardNumber: cardNumber,
+        expirationYear: expirationYear,
+        expirationMonth: expirationMonth,
+        cvv: cvv,
+        salutation:salutation,
+        firstName: firstName,
+        surname: surname,
+        email:email,
+        streetNumber: streetNumber,
+        townCity: townCity,
+        country: country,
+        postcode: postcode,
+        birthDay: birthDay,
+        passcode: passcode,
+        phone: phone
+    }
+    return paymentInfo;
+}
+
+function paymentInfoHandler() {
+    $.ajax({
+        url: REMOTE_SERVER + '/ticketDownloadLink',
+        type: 'GET',
+        data: generatePaymentInfo($("#cardNumber").val(),
+            $("#expirationYear").val(),
+            $("#expirationMonth").val(),
+            $("#cvv").val(),
+            $("#salutation").val(),
+            $("#firstName").val(),
+            $("#surname").val(),
+            $("#email").val(),
+            $("#streetNumber").val(),
+            $("#townCity").val(),
+            $("#country").val(),
+            $("#postcode").val(),
+            $("#birthDay").val(),
+            $("#passcode").val(),
+            $("#phone").val()),
+        error: function (xhr) {
+            alert('Ajax request 發生錯誤');
+        },
+        success: function (data) {
+            if (!data.success) {
+                $("#creditCardVerifyInfo").slideUp("slow", function () {
+                    $("#creditCardVerifyError").fadeIn();
+                });
+            }
+            else {
+                for (let i in data.url) {
+                    window.open(data.url[i], "_blank");
+                }
+            }
+        }
+    });
+}
 function registerHandler() {
     $("#click").click(clickHandler);
 
@@ -35,44 +92,7 @@ function registerHandler() {
         });
     });
 
-    $("#pay").click(function () {
-        $.ajax({
-            url: REMOTE_SERVER + '/ticketDownloadLink',
-            type: 'GET',
-            data: {
-                cardNumber: $("#cardNumber").val(),
-                expirationDate: $("#expirationYear").val(),
-                expirationDate: $("#expirationMonth").val(),
-                cvv: $("#cvv").val(),
-                salutation: $("#salutation").val(),
-                firstName: $("#firstName").val(),
-                surname: $("#surname").val(),
-                email: $("#email").val(),
-                streetnumber: $("#streetnumber").val(),
-                townCity: $("#townCity").val(),
-                country: $("#country").val(),
-                postcode: $("#postcode").val(),
-                birthDay: $("#birthDay").val(),
-                passcode: $("#passcode").val(),
-                phone: $("#phone").val(),
-            },
-            error: function (xhr) {
-                alert('Ajax request 發生錯誤');
-            },
-            success: function (data) {
-                if (!data.success) {
-                    $("#creditCardVerifyInfo").slideUp("slow", function () {
-                        $("#creditCardVerifyError").fadeIn();
-                    });
-                }
-                else {
-                    for (let i in data.url) {
-                        window.open(data.url[i], "_blank");
-                    }
-                }
-            }
-        });
-    });
+    $("#pay").click(paymentInfoHandler);
 
     $("#backToCreditCardInfoInput").click(function () {
         $("#creditCardVerifyError").slideUp("slow", function () {

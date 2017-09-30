@@ -11,7 +11,11 @@
   "dependencies": {
     "chromedriver": "^2.29.0",
     "cucumber": "^3.0.3",
+<<<<<<< Updated upstream
     "moment": "^2.18.1",
+=======
+    "qunit-cli": "^0.2.0",
+>>>>>>> Stashed changes
     "selenium-webdriver": "^3.4.0"
   }
 }

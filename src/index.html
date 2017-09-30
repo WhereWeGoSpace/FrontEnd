@@ -15,123 +15,155 @@
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet"
     type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <style>
+    .loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
 
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
   <!-- Header -->
   <header class="header" id="top">
 
-    <div id="bar" class="text-vertical-center">
+    <div id="bar" class="text-vertical-center" style="font-family: 'Oleo Script'; font-size: 20px">
+
       <h1>Where are you going?</h1>
       <br>
-      <a id="click" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Help me!!</a>
+      <br>
+      <a id="click" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 30px">Amazing me!!</a>
     </div>
 
-    <div id="result" class="text-vertical-center" style="display: none">
-      <div style="margin-bottom: 20px; font-size: 50px" class="container">
-        <div class="row">
-          <div class="col align-self-end">
-            Start site:
+    <div id="result" class="row text-vertical-center" style="display: none; opacity: 0.9">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="card col-6">
+          <img class="card-img-top" src="img/railway.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title" style="padding-top: 5px">Ticket Info</h4>
+            <p class="card-text">Lead me a brand new way</p>
           </div>
-          <div class="col align-self-start">
-            <span id="startSite"></span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col align-self-end">
-            End site:
-          </div>
-          <div class="col align-self-start">
-            <span id="endSite"></span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col align-self-end">
-            Date:
-          </div>
-          <div class="col align-self-start">
-            <span id="date"></span>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">🚋 <span id="startSite"></span>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;🚋 <span id="endSite"></span></li>
+            <li class="list-group-item">📅 Date: <span id="date"></span></li>
+            <li class="list-group-item">💶 € <span id="price"></span></li>
+          </ul>
+          <div class="card-block" style="padding: 5px">
+            <a id="checkout" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 20px; background-color: #0275d8; color: #ffffff; width: 120px">Checkout</a>
+            <a id="retry" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 20px; width: 120px">Retry</a>
           </div>
         </div>
-        <div class="row">
-          <div class="col align-self-end">
-            Price:
-          </div>
-          <div class="col align-self-start">
-            $<span id="price"></span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a id="checkout" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Checkout</a>
       </div>
     </div>
 
-    <div id="creditCardVerifyInfo" class="text-vertical-center" style="display: none">
-      <div style="margin-bottom: 20px; font-size: 30px" class="row">
-        <div class="col">
-          Card No.:<br><input type="text" name="cardNumber"><br>
+    <div id="contactInfo" style="display:none">
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-2"></div>
+        <div class="card col-8">
+          <h3>Contact Info</h3>
+          <form>
+            <div class="form-group row">
+              <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstName" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="Surname" class="col-sm-2 col-form-label">Surname</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="surname" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Passport" class="col-sm-2 col-form-label">Passport</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="passport" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Birthday" class="col-sm-2 col-form-label">Birthday</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="birthDay" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="Email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-2 col-sm-10">
+                <a id="payment" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 20px; background-color: #0275d8; color: #ffffff; width: 120px">Next Step</a>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="col">
-          Expiration year:<br><input type="text" name="expirationYear"><br>
-        </div>
-        <div class="col">
-          Expiration month:<br><input type="text" name="expirationMonth"><br>
-        </div>
-        <div class="col">
-          CVV:<br><input type="text" name="cvv"><br>
-        </div>
-        <div class="col">
-          Salutation:<br><input type="text" name="salutation"><br>
-        </div>
-        <div class="col">
-          First name:<br><input type="text" name="firstName"><br>
-        </div>
-        <div class="col">
-          Surname:<br><input type="text" name="surname"><br>
-        </div>
-        <div class="col">
-          Email:<br><input type="text" name="email"><br>
-        </div>
-        <div class="col">
-          Street, Number:<br><input type="text" name="streetNumber"><br>
-        </div>
-        <div class="col">
-          Town, City:<br><input type="text" name="townCity"><br>
-        </div>
-        <div class="col">
-          Country:<br><input type="text" name="country"><br>
-        </div>
-        <div class="col">
-          Postcode:<br><input type="text" name="postcode"><br>
-        </div>
-        <div class="col">
-          Birth day:<br><input type="text" name="birthDay"><br>
-        </div>
-        <div class="col">
-          Passcode:<br><input type="text" name="passcode"><br>
-        </div>
-        <div class="col">
-          Phone:<br><input type="text" name="phone"><br>
-        </div>
-      </div>
-      <div>
-        <a id="pay" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Pay</a>
       </div>
     </div>
 
-    <div id="creditCardVerifyError" class="text-vertical-center" style="display: none">
-      <div style="margin-bottom: 20px; font-size: 50px">
-        <div>
-          Some thing wrong, retry please
+    <div id="creditCardInfo" style="display:none">
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-2"></div>
+        <div class="card col-8">
+          <h3>Credit Card Info</h3>
+          <form>
+            <div class="form-group row">
+              <label for="cardNumber" class="col-sm-3 col-form-label">Card No.</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="cardNumber" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="expirationYear" class="col-sm-3 col-form-label">Expiration year</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="expirationYear" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="expirationMonth" class="col-sm-3 col-form-label">Expiration month</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="expirationMonth" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="CVV" class="col-sm-3 col-form-label">CVV</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="cvv" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-2 col-sm-10">
+                <a id="pay" href="#" class="btn btn-dark btn-lg js-scroll-trigger" style="border-radius: 8px; font-size: 20px; background-color: #0275d8; color: #ffffff; width: 120px">Confirm</a>
+                <div id="loader" class="loader" style="display:none"></div>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-      <div>
-        <a id="backToCreditCardInfoInput" href="#" class="btn btn-dark btn-lg js-scroll-trigger">Back</a>
       </div>
     </div>
 
@@ -140,6 +172,8 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/moment/moment.js"></script>
+  <script src="vendor/moment/moment-timezone-with-data-2012-2022.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Plugin JavaScript -->

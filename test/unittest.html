@@ -4,16 +4,26 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>QUnit Example</title>
+	<title>QUnit</title>
 	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
 </head>
 
 <body>
 	<div id="qunit"></div>
 	<div id="qunit-fixture"></div>
+<<<<<<< Updated upstream
+	<script src="../src/vendor/moment/moment.js"></script>
+	<script src="../src/vendor/moment/moment-timezone-with-data-2012-2022.js"></script>
 	<script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
 	<script src="../src/js/logic.js"></script>
 	<script src="testGetTravelInfo.js"></script>
+=======
+	<!--<script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>-->
+	<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+	<script src="blanket.min.js"></script>
+	<script src="../src/js/logic.js" data-cover></script>
+	<script src="testGetTravelInfo.js" data-cover></script>
+>>>>>>> Stashed changes
 	<script src="testGeneratePaymentInfo.js"></script>
 </body>
 

@@ -3,7 +3,7 @@ Feature: Loading Journeys
   I want to have a journey on web page
   So that I can see the result
 
-  Scenario: Click
+  Scenario: Enter web app
   Given I am on the home page
   When I click on "Help me!!"
   Then I should see "Start site"

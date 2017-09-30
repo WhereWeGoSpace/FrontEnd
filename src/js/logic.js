@@ -28,7 +28,7 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
     startSite.text(data.From);
     endSite.text(data.To);
     date.text(moment(data.Date).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm:ss a'));
-    price.text(data.Price);
+    price.text(data.Price / 100);
 
     site_code.from = data.From_Code;
     site_code.to = data.To_Code;
@@ -100,9 +100,17 @@ function paymentInfoHandler() {
 function registerHandler() {
     $("#click").click(clickHandler);
 
+    $("#retry").click(clickHandler);
+    
     $("#checkout").click(function () {
         $("#result").slideUp("slow", function () {
-            $("#creditCardVerifyInfo").fadeIn();
+            $("#contactInfo").fadeIn();
+        });
+    });
+
+    $("#payment").click(function () {
+        $("#contactInfo").slideUp("slow", function () {
+            $("#creditCardInfo").fadeIn();
         });
     });
 

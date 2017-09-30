@@ -5,11 +5,11 @@ if (typeof QUnit == 'undefined') // if your tests also run in the browser...
 
 if (typeof module !== 'undefined' && module.exports) {
 	var logic = require('../src/js/logic.js')
-	generatePaymentInfo = logic.generatePaymentInfo;	
+	generateBookingInfo = logic.generateBookingInfo;	
 }
 
 QUnit.test("test_credit_card_payment_info", function (assert) {
-    var paymentInfo = generatePaymentInfo("1", "2", "3", "4", "5", {"from": "qwe", "to": "rit"});
+    var paymentInfo = generateBookingInfo("1", "2", "3", "4", "5", {"from": "qwe", "to": "rit"});
 
     assert.ok("qwe" == paymentInfo.From_Code, "Passed!");
     assert.ok("rit" == paymentInfo.To_Code, "Passed!");

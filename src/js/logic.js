@@ -1,10 +1,11 @@
 var site_code = {"from":"", "to":""};
-var order_info = {"orderNumber":""};
+var order_info = {"bookingID":"", "orderID":""};
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         processTravelInfo: processTravelInfo,
         generatePaymentInfo: generatePaymentInfo,
+        generateBookingInfo: generateBookingInfo,
     };
 }
 
@@ -39,8 +40,21 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
     });
 }
 
-function generatePaymentInfo(firstName, surname, email, birthDay, passcode, site_code) {
+function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, order_info) {
     var paymentInfo = {
+        "BookingId": order_info.bookingID,
+        "CreditCard": {
+          "number": cardNumber,
+          "exp_month": expirationMonth,
+          "exp_year": expirationYear,
+          "cvv": cvv
+        }
+      };
+    return paymentInfo;
+}
+
+function generateBookingInfo(firstName, surname, email, birthDay, passcode, site_code) {
+    var bookingInfo = {
         "From_Code": site_code.from,
         "To_Code": site_code.to,
         "Contactor": {
@@ -61,22 +75,51 @@ function generatePaymentInfo(firstName, surname, email, birthDay, passcode, site
             "gender": ""
             }
         ]
-    }
-    return paymentInfo;
+    };
+    return bookingInfo;
 }
 
-function confirm() {
+function downloadTicket() {
     
+    $.ajax({
+        url: REMOTE_SERVER + '/api/Ticket/IssueTicket',
+        type: 'POST',
+        data: { "orderId": order_info.orderID },
+        error: function (xhr) {
+            alert('Ajax request 發生錯誤');
+        },
+        success: function (data) {
+            
+        },
+        dataType: "json"
+    });
 }
 
-function payment(cardNumber, expirationYear, expirationMonth, cvv) {
+function payment() {
+    $.ajax({
+        url: REMOTE_SERVER + '/api/Ticket/Payment',
+        type: 'POST',
+        data: generatePaymentInfo(
+            $("#cardNumber").val(),
+            $("#expirationYear").val(),
+            $("#expirationMonth").val(),
+            $("#cvv").val(),
+            order_info),
+        error: function (xhr) {
+            alert('Ajax request 發生錯誤');
+        },
+        success: function (data) {
+            order_info.orderID = data.order.id;
+        },
+        dataType: "json"
+    });
 }
 
 function booking() {
     $.ajax({
-        url: REMOTE_SERVER + '/ticketDownloadLink',
+        url: REMOTE_SERVER + '/api/Ticket/Booking',
         type: 'POST',
-        data: generatePaymentInfo(
+        data: generateBookingInfo(
             $("#firstName").val(),
             $("#surname").val(),
             $("#email").val(),
@@ -87,7 +130,7 @@ function booking() {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
-            order_info.orderNumber = data.id;
+            order_info.bookingID = data.id;
         },
         dataType: "json"
     });

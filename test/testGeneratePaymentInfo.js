@@ -1,6 +1,5 @@
-
 QUnit.test("test_credit_card_payment_info", function (assert) {
-    var paymentInfo = generatePaymentInfo(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+    var paymentInfo = generatePaymentInfo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
 
     assert.ok(1 == paymentInfo.cardNumber, "Passed!");
     assert.ok(2 == paymentInfo.expirationYear, "Passed!");
@@ -17,5 +16,5 @@ QUnit.test("test_credit_card_payment_info", function (assert) {
     assert.ok(13 == paymentInfo.birthDay, "Passed!");
     assert.ok(14 == paymentInfo.passcode, "Passed!");
     assert.ok(15 == paymentInfo.phone, "Passed!");
-	
+
 });

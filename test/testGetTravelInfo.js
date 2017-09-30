@@ -1,4 +1,3 @@
-
 QUnit.test("test_travel_info", function (assert) {
 	let travelInfo = [{ "timestamp": 1506732963000, "startSite": "Taipei", "endSite": "Taoyuan", "price": "100" }]
 

@@ -95,7 +95,13 @@ function registerHandler() {
 
     $("#checkout").click(function () {
         $("#result").slideUp("slow", function () {
-            $("#creditCardVerifyInfo").fadeIn();
+            $("#contactInfo").fadeIn();
+        });
+    });
+
+    $("#payment").click(function () {
+        $("#contactInfo").slideUp("slow", function () {
+            $("#creditCardInfo").fadeIn();
         });
     });
 

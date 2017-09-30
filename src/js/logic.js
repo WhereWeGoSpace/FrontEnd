@@ -37,8 +37,20 @@ $(function () {
             type: 'GET',
             data: {
                 cardNumber: $("#cardNumber").val(),
-                expirationDate: $("#expirationDate").val(),
-                verifyNumber: $("#verifyNumber").val()
+                expirationDate: $("#expirationYear").val(),
+                expirationDate: $("#expirationMonth").val(),
+                cvv: $("#cvv").val(),         
+                salutation : $("#salutation").val(),
+                firstName: $("#firstName").val(),
+                surname: $("#surname").val(),
+                email: $("#email").val(),
+                streetnumber: $("#streetnumber").val(),
+                townCity: $("#townCity").val(),
+                country: $("#country").val(),
+                postcode: $("#postcode").val(),
+                birthDay: $("#birthDay").val(),
+                passcode: $("#passcode").val(),
+                phone: $("#phone").val(),
             },
             error: function(xhr) {
               alert('Ajax request 發生錯誤');

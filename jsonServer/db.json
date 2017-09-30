@@ -1,10 +1,10 @@
 {
     "travelInfo": [
       { 
-        "startSite": "start", 
-        "endSite": "end", 
-        "timestamp": 1506708367000 , 
-        "price": "123" 
+        "startSite": "Rome", 
+        "endSite": "Milan", 
+        "timestamp": 1507028367000, 
+        "price": "3900" 
       }
     ],
 

@@ -5,6 +5,9 @@ defineSupportCode(function({Given, When, Then}) {
   Given('I am on the Cucumber.js GitHub repository', function() {
     return this.driver.get('https://github.com/cucumber/cucumber-js/tree/master');
   });
+  Given('I am on the home page', function() {
+    return this.driver.get('http://localhost:8080');
+  });
 
   When('I click on {string}', function (text) {
     return this.driver.findElement({linkText: text}).then(function(element) {

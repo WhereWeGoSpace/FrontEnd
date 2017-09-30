@@ -89,6 +89,7 @@ function downloadTicket() {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
+            console.log(data);
             for (var i in data)
             {
                 window.open(data[i], "_blank");
@@ -112,7 +113,9 @@ function payment() {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
+            console.log(data)
             order_info.orderID = data.order.id;
+            downloadTicket();
         },
         dataType: "json"
     });
@@ -133,7 +136,9 @@ function booking() {
             alert('Ajax request 發生錯誤');
         },
         success: function (data) {
+            console.log(data);
             order_info.bookingID = data.id;
+            payment();
         },
         dataType: "json"
     });

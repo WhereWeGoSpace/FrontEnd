@@ -20,7 +20,7 @@ function clickHandler() {
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
-        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar")), site_code},
+        success: function (data) { processTravelInfo(data, $("#startSite"), $("#endSite"), $("#date"), $("#price"), $("#bar"), site_code)},
         dataType: "json"
     });
 }
@@ -85,7 +85,7 @@ function booking() {
             $("#surname").val(),
             $("#email").val(),
             $("#birthDay").val(),
-            $("#passcode").val())
+            $("#passcode").val()),
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
@@ -94,17 +94,6 @@ function booking() {
         },
         dataType: "json"
     });
-}
-
-if (!data.success) {
-    $("#creditCardVerifyInfo").slideUp("slow", function () {
-        $("#creditCardVerifyError").fadeIn();
-    });
-}
-else {
-    for (let i in data.url) {
-        window.open(data.url[i], "_blank");
-    }
 }
 
 function registerHandler() {

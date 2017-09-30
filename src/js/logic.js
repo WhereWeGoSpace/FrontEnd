@@ -1,4 +1,4 @@
-var site_code = {"from":"", "to":""};
+var site_code = {"from":"", "to":"", "bookingCode":""};
 var order_info = {"bookingID":"", "orderID":""};
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -34,6 +34,7 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
 
     site_code.from = data.From_Code;
     site_code.to = data.To_Code;
+    site_code.bookingCode = data.Booking_Code;
 
     bar.slideUp("slow", function () {
         $("#result").fadeIn();
@@ -41,6 +42,7 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
 }
 
 function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, order_info) {
+    console.log
     var paymentInfo = {
         "BookingId": order_info.bookingID,
         "CreditCard": {
@@ -57,6 +59,7 @@ function generateBookingInfo(firstName, surname, email, birthDay, passcode, site
     var bookingInfo = {
         "From_Code": site_code.from,
         "To_Code": site_code.to,
+        "Booking_Code": site_code.bookingCode,
         "Contactor": {
             "name": firstName + surname,
             "email": email,

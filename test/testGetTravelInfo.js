@@ -10,7 +10,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 QUnit.test("test_travel_info", function (assert) {
-	let travelInfo = { "Date": "2017-10-04T05:27:39.748765+00:00", "From": "Taipei", "To": "Taoyuan", "From_Code": "SIFJD38", "To_Code": "JIFU234", "Price": "100" }
+	let travelInfo = { "Date": "2017-10-04T05:27:39.748765+00:00", "From": "Taipei", "To": "Taoyuan", "From_Code": "SIFJD38", "To_Code": "JIFU234", "Price": "1000" }
 
 	var MockHTMLElement = function () { };
 
@@ -31,8 +31,9 @@ QUnit.test("test_travel_info", function (assert) {
 	assert.ok(startSite.text == "Taipei", "Passed!");
 	assert.ok(endSite.text == "Taoyuan", "Passed!");
 	console.log(date.text);
+	
 	//assert.ok(date.text == "October 4th 2017, 12:27:39 am", "Passed!");
-	assert.ok(price.text == "100", "Passed!");	
+	assert.ok(price.text == "10", "Passed!");	
 	assert.ok(site_code.from == "SIFJD38", "Passed!");
 	assert.ok(site_code.to == "JIFU234", "Passed!");
 	assert.ok(bar.slideUpIsCalled == true, "Passed!");

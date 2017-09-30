@@ -145,7 +145,11 @@ function booking() {
 }
 
 function registerHandler() {
-    $("#click").click(clickHandler);
+    $("#click").click(function() {
+        $(this).hide();
+        $("#searchLoader").show();
+        clickHandler();
+    });
 
     $("#retry").click(clickHandler);
     

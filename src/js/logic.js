@@ -39,7 +39,7 @@ function processTravelInfo(data, startSite, endSite, date, price, bar, site_code
     });
 }
 
-function generatePaymentInfo(cardNumber, expirationYear, expirationMonth, cvv, firstName, surname, email, birthDay, passcode) {
+function generatePaymentInfo(firstName, surname, email, birthDay, passcode, site_code) {
     var paymentInfo = {
         "From_Code": site_code.from,
         "To_Code": site_code.to,
@@ -69,23 +69,20 @@ function confirm() {
     
 }
 
-function payment() {
-
+function payment(cardNumber, expirationYear, expirationMonth, cvv) {
 }
 
 function booking() {
     $.ajax({
         url: REMOTE_SERVER + '/ticketDownloadLink',
         type: 'POST',
-        data: generatePaymentInfo($("#cardNo").val(),
-            $("#expirationYear").val(),
-            $("#expirationMonth").val(),
-            $("#cvv").val(),
+        data: generatePaymentInfo(
             $("#firstName").val(),
             $("#surname").val(),
             $("#email").val(),
             $("#birthDay").val(),
-            $("#passcode").val()),
+            $("#passcode").val(),
+            site_code),
         error: function (xhr) {
             alert('Ajax request 發生錯誤');
         },
